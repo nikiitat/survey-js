@@ -1,5 +1,6 @@
 const {Builder, Browser, By, until} = require('selenium-webdriver');
 
+
 const webDriverModule = function () {
     this.driver = new Builder().forBrowser('chrome').build();
     const driver = this.driver;
@@ -10,14 +11,7 @@ const webDriverModule = function () {
         }, function (error) {
             return false;
         });
-        // driver.manage().window().setRect({x:0,y:0,height:600,width:900}).then(function () {
-        //     return true;
-        // }, function (error) {
-        //     return false;
-        // });
     };
-    // driver.manage().setTimeouts({implicit: 100}).then(r => console.log());
-    // driver.manage().windowSize(600,900);
 
     this.navigateTo = function (url) {
         return driver.get(url);
