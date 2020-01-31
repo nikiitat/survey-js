@@ -1,0 +1,16 @@
+{
+  "name": "survey",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "selenium-webdriver": "4.0.0-alpha.5",
+    "mocha": "7.0.0"
+  },
+  "scripts": {
+    "test": "mocha --timeout 50000 'survey.js'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
