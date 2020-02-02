@@ -9,7 +9,7 @@ BasePage.prototype.closeBrowser = function () {
 };
 
 BasePage.prototype.optInCheckBox = function () {
-    return this.selectCheckBox('#question_answer_1 > div:nth-child(1) > div > div > div.answer_section > div > div > div > div');
+    return this.clickByLocator('#question_answer_1 > div:nth-child(1) > div > div > div.answer_section > div > div > div > div');
 };
 
 BasePage.prototype.goToNextPage = function () {
@@ -17,7 +17,7 @@ BasePage.prototype.goToNextPage = function () {
 };
 
 BasePage.prototype.questionPageIsDisplayed = function (page) {
-    return this.waitForElement('#question_answer_' + page + ' > div:nth-child(1) > div > div > div.header.ng-isolate-scope > div > div > div > h1', 100);
+    return this.waitForElement('#question_answer_' + page + ' > div:nth-child(1) > div > div > div.header.ng-isolate-scope > div > div > div > h1', 20000);
 };
 
 BasePage.prototype.selectAnswerOnPage = function (answer, page) {
@@ -29,7 +29,11 @@ BasePage.prototype.writeAnswerOnPage = function (answer, page) {
 };
 
 BasePage.prototype.allDonePage = function () {
-    return this.waitForElement('body > div.wrapper.ng-scope > div.static-page-container.ng-scope > div > div > div > div:nth-child(2) > h1', 800);
+    return this.waitForElement('body > div.wrapper.ng-scope > div.static-page-container.ng-scope > div > div > div > div:nth-child(2) > h1', 40000);
+};
+
+BasePage.prototype.selectAnswerOn9thPage = function (answer) {
+    return this.clickAnswerByGivenName(answer, '#question_answer_9 > div:nth-child(1) label');
 };
 
 module.exports = BasePage;

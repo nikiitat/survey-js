@@ -1,15 +1,16 @@
 const {Builder, Browser, By, until} = require('selenium-webdriver');
-
+require('chromedriver');
+const map = require("selenium-webdriver");
 
 const webDriverModule = function () {
-    this.driver = new Builder().forBrowser('chrome').build();
-    const driver = this.driver;
+    const driver = new Builder().forBrowser('chrome').build();
 
-    this.config = function () {
-        driver.manage().setTimeouts({implicit: 45, pageLoad: 60}).then(function () {
-            return true;
-        }, function (error) {
-            return false;
+    this.setupConfig = function () {
+        driver.manage().setTimeouts({pageLoad: 30000}).catch((e) => {
+            console.log(e)
+        });
+        driver.manage().window().maximize().catch((e) => {
+            console.log(e)
         });
     };
 
@@ -22,9 +23,13 @@ const webDriverModule = function () {
     };
 
     this.waitForElement = function (locator, TIMEOUT) {
+        driver.sleep(1500).catch((e) => {
+            console.log(e)
+        });
         return driver.wait(until.elementLocated(By.css(locator)), TIMEOUT).then(function () {
             return true;
         }, function (error) {
+            console.log(error);
             return false;
         });
     };
@@ -51,8 +56,23 @@ const webDriverModule = function () {
         }, function (error) {
             return false;
         });
-    }
+    };
 
+    this.clickAnswerByGivenName = function (name, locator) {
+        driver.findElements(By.css(locator)).then(function (elements) {
+            elements.map(function (el) {
+                el.getText().then(function (txt) {
+                    console.log(txt);
+                    if (txt === name) {
+                        el.click().then(function () {
+                            return true;
+                        }, function (error) {
+                            return false;
+                        })
+                    }
+                })
+            })
+        })
+    };
 };
-
 module.exports = webDriverModule;
