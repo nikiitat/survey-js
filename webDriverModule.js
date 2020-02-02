@@ -6,7 +6,7 @@ const webDriverModule = function () {
     const driver = new Builder().forBrowser('chrome').build();
 
     this.setupConfig = function () {
-        driver.manage().setTimeouts({pageLoad: 30000}).catch((e) => {
+        driver.manage().setTimeouts({implicit: 40000, pageLoad: 30000}).catch((e) => {
             console.log(e)
         });
         driver.manage().window().maximize().catch((e) => {
@@ -34,12 +34,17 @@ const webDriverModule = function () {
         });
     };
 
-    this.selectCheckBox = function (locator) {
-        return driver.findElement(By.css(locator)).click().then(function () {
-            return true;
-        }, function (error) {
+    this.clickNextButtonByLocator = function (locator) {
+        return driver.findElement(By.css(locator)).getAttribute('class').then(function (value) {
+            if (!value.includes('is_incomplete')) {
+                return driver.findElement(By.css(locator)).click().then(function () {
+                    return true;
+                }, function (error) {
+                    return false;
+                });
+            }
             return false;
-        });
+        })
     };
 
     this.clickByLocator = function (locator) {
@@ -58,21 +63,26 @@ const webDriverModule = function () {
         });
     };
 
-    this.clickAnswerByGivenName = function (name, locator) {
-        driver.findElements(By.css(locator)).then(function (elements) {
-            elements.map(function (el) {
-                el.getText().then(function (txt) {
-                    console.log(txt);
-                    if (txt === name) {
-                        el.click().then(function () {
-                            return true;
-                        }, function (error) {
-                            return false;
-                        })
-                    }
-                })
-            })
-        })
+    this.clickAnswerByGivenName = async function (name, locator) {
+        const elements = await driver.findElements(By.css(locator));
+        return findElementByTextAndClick(elements, name);
     };
+
+    async function findElementByTextAndClick(elements, name) {
+        let expectedElement;
+        for (var i = 0; i < elements.length; i++) {
+            await elements[i].getText().then(function (txt) {
+                if (txt === name) {
+                    expectedElement = elements[i]
+                }
+            })
+        }
+        return expectedElement.click().then(function () {
+            return true;
+        }, function (error) {
+            return false;
+        });
+    };
+
 };
 module.exports = webDriverModule;

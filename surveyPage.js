@@ -13,11 +13,11 @@ BasePage.prototype.optInCheckBox = function () {
 };
 
 BasePage.prototype.goToNextPage = function () {
-    return this.clickByLocator('span > a > button');
+    return this.clickNextButtonByLocator('span > a > button');
 };
 
 BasePage.prototype.questionPageIsDisplayed = function (page) {
-    return this.waitForElement('#question_answer_' + page + ' > div:nth-child(1) > div > div > div.header.ng-isolate-scope > div > div > div > h1', 20000);
+    return this.waitForElement('#question_answer_' + page + ' > div:nth-child(1) > div > div > div.header.ng-isolate-scope > div > div > div > h1', 30000);
 };
 
 BasePage.prototype.selectAnswerOnPage = function (answer, page) {

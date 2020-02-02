@@ -4,7 +4,7 @@ assert = require('assert')
 
 let surveyPage;
 
-describe('Survey suite', function () {
+describe('Survey test suite', function () {
     this.timeout(80000);
 
     before(async function () {
@@ -14,51 +14,51 @@ describe('Survey suite', function () {
     });
 
     it('Opening a survey and the flow of answering questions.', async function () {
-        assert.equal(await surveyPage.webPageIsDisplayed(), true, 'Web page is not displayed');
+        assert.equal(await surveyPage.webPageIsDisplayed(), true, 'Web page is not Displayed');
 
-        assert.equal(await surveyPage.optInCheckBox(), true, 'CheckBox is not displayed');
-        assert.equal(await surveyPage.goToNextPage(), true, 'Next Button is not displayed on page 1');
+        assert.equal(await surveyPage.optInCheckBox(), true, 'CheckBox is not Displayed');
+        assert.equal(await surveyPage.goToNextPage(), true, 'Next Button is not Enabled on page 1');
 
-        assert.equal(await surveyPage.questionPageIsDisplayed(2), true, 'Page 2 with question is not displayed');
+        assert.equal(await surveyPage.questionPageIsDisplayed(2), true, 'Page 2 with question is not Displayed');
         assert.equal(await surveyPage.selectAnswerOnPage(1, 2), true, 'Can not select answer 1 on page 2');
-        assert.equal(await surveyPage.goToNextPage(), true, 'Next Button is not displayed on page 2');
+        assert.equal(await surveyPage.goToNextPage(), true, 'Next Button is not Enabled on page 2');
 
-        assert.equal(await surveyPage.questionPageIsDisplayed(3), true, 'Page 3 with question is not displayed');
+        assert.equal(await surveyPage.questionPageIsDisplayed(3), true, 'Page 3 with question is not Displayed');
         assert.equal(await surveyPage.selectAnswerOnPage(2, 3), true, 'Can not select answer 2 on page 3');
         assert.equal(await surveyPage.selectAnswerOnPage(3, 3), true, 'Can not select answer 3 on page 3');
-        // Uncomment below to make test pass!!
-        assert.equal(await surveyPage.selectAnswerOnPage(1, 3), true, 'Can not select answer 1 on page 3');
-        assert.equal(await surveyPage.goToNextPage(), true, 'Next Button is not displayed on page 3');
+        // Uncomment below line to make test pass!!
+        // assert.equal(await surveyPage.selectAnswerOnPage(1, 3), true, 'Can not select answer 1 on page 3');
+        assert.equal(await surveyPage.goToNextPage(), true, 'Next Button is not Enabled on page 3');
 
-        assert.equal(await surveyPage.questionPageIsDisplayed(4), true, 'Page 4 with question is not displayed');
+        assert.equal(await surveyPage.questionPageIsDisplayed(4), true, 'Page 4 with question is not Displayed');
         assert.equal(await surveyPage.selectAnswerOnPage(1, 4), true, 'Can not select answer 4 on page 3');
-        assert.equal(await surveyPage.goToNextPage(), true, 'Next Button is not displayed on page 4');
+        assert.equal(await surveyPage.goToNextPage(), true, 'Next Button is not Enabled on page 4');
 
-        assert.equal(await surveyPage.questionPageIsDisplayed(5), true, 'Page 5 with question is not displayed');
+        assert.equal(await surveyPage.questionPageIsDisplayed(5), true, 'Page 5 with question is not Displayed');
         assert.equal(await surveyPage.writeAnswerOnPage('asdsadas', 5), true, 'Can not write answer \'asdsada\' on page 5');
-        assert.equal(await surveyPage.goToNextPage(), true, 'Next Button is not displayed on page 5');
+        assert.equal(await surveyPage.goToNextPage(), true, 'Next Button is not Enabled on page 5');
 
-        assert.equal(await surveyPage.questionPageIsDisplayed(6), true, 'Page 6 with question is not displayed');
+        assert.equal(await surveyPage.questionPageIsDisplayed(6), true, 'Page 6 with question is not Displayed');
         assert.equal(await surveyPage.selectAnswerOnPage(1, 6), true, 'Can not select answer 1 on page 6');
-        assert.equal(await surveyPage.goToNextPage(), true, 'Next Button is not displayed on page 6');
+        assert.equal(await surveyPage.goToNextPage(), true, 'Next Button is not Enabled on page 6');
 
-        assert.equal(await surveyPage.questionPageIsDisplayed(7), true, 'Page 7 with question is not displayed');
+        assert.equal(await surveyPage.questionPageIsDisplayed(7), true, 'Page 7 with question is not Displayed');
         assert.equal(await surveyPage.writeAnswerOnPage(7, 7), true, 'Can not write answer \'7\' on page 7');
-        assert.equal(await surveyPage.goToNextPage(), true, 'Next Button is not displayed on page 7');
+        assert.equal(await surveyPage.goToNextPage(), true, 'Next Button is not Enabled on page 7');
 
-        assert.equal(await surveyPage.questionPageIsDisplayed(8), true, 'Page 8 with question is not displayed');
+        assert.equal(await surveyPage.questionPageIsDisplayed(8), true, 'Page 8 with question is not Displayed');
         assert.equal(await surveyPage.selectAnswerOnPage(2, 8), true, 'Can not select answer 2 on page 8');
-        assert.equal(await surveyPage.goToNextPage(), true, 'Next Button is not displayed on page 8');
+        assert.equal(await surveyPage.goToNextPage(), true, 'Next Button is not Enabled on page 8');
 
-        assert.equal(await surveyPage.questionPageIsDisplayed(9), true, 'Page 9 with question is not displayed');
+        assert.equal(await surveyPage.questionPageIsDisplayed(9), true, 'Page 9 with question is not Displayed');
         assert.equal(await surveyPage.selectAnswerOn9thPage('The Godfather'), true, 'Can not select answer \'The Godfather\' on page 9');
-        assert.equal(await surveyPage.goToNextPage(), true, 'Next Button is not displayed on page 9');
+        assert.equal(await surveyPage.goToNextPage(), true, 'Next Button is not Enabled on page 9');
 
-        assert.equal(await surveyPage.questionPageIsDisplayed('10a'), true, 'Page 10 with question is not displayed');
+        assert.equal(await surveyPage.questionPageIsDisplayed('10a'), true, 'Page 10 with question is not Displayed');
         assert.equal(await surveyPage.selectAnswerOnPage(1, '10a'), true, 'Can not select answer 1 on page 10');
-        assert.equal(await surveyPage.goToNextPage(), true, 'Next Button is not displayed on page 10');
+        assert.equal(await surveyPage.goToNextPage(), true, 'Next Button is not Enabled on page 10');
 
-        assert.equal(await surveyPage.allDonePage(), true, 'All done! page is not displayed');
+        assert.equal(await surveyPage.allDonePage(), true, 'All done! page is not Displayed');
     });
 
     after(async function () {
