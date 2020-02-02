@@ -10,7 +10,7 @@
     "mocha-simple-html-reporter": "^1.1.0"
   },
   "scripts": {
-    "test": "mocha --timeout 80000 'survey.js' --reporter mocha-simple-html-reporter --reporter-options output=report.html"
+    "test": "mocha --timeout 80000 'surveyTest.js' --reporter mocha-simple-html-reporter --reporter-options output=report.html"
   },
   "keywords": [],
   "author": "",

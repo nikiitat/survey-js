@@ -1,4 +1,4 @@
-Downolad dependencies: 
+Download dependencies: 
  - npm install
 
 Run test:
